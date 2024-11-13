@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CareSafe</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyCbie-Y3ozA44yGLMei8-vVn8BhY6nYxAo</string>
 </resources>
