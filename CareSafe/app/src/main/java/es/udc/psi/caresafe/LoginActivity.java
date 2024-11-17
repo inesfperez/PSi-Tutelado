@@ -76,6 +76,11 @@ public class LoginActivity extends AppCompatActivity {
         registerTextView = findViewById(R.id.register_tv);
         progressBar = findViewById(R.id.progress_bar_login);
 
+        registerTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
         loginButton.setOnClickListener(v -> {
             String email = emailEditText.getText().toString();
             String password = passwordEditText.getText().toString();

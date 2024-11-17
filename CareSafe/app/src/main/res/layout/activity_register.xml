@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_blue"
+    android:padding="16dp">
+
+    <!-- Imagen en la parte superior -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/icono_de_la_app"
+        android:padding="160dp"
+        android:src="@mipmap/ic_launcher_round"/>
+
+    <!-- Contenedor para los campos de entrada, barra de progreso y botón -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="bottom"> <!-- Esto asegura que se alineen en la parte inferior -->
+
+        <!-- Campo de correo electrónico -->
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_str"
+            android:inputType="textEmailAddress" />
+
+        <!-- Campo de contraseña -->
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_str"
+            android:inputType="textPassword" />
+
+        <!-- Campo de confirmar contraseña -->
+        <EditText
+            android:id="@+id/confirm_password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password_str"
+            android:inputType="textPassword" />
+
+        <!-- Barra de progreso -->
+        <ProgressBar
+            android:id="@+id/progress_bar_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <!-- Botón de registrar -->
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/commit_register_str"
+            android:backgroundTint="@color/dark_blue" />
+    </LinearLayout>
+</LinearLayout>
