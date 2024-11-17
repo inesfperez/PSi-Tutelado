@@ -6,4 +6,5 @@
     <string name="login_str">Iniciar sesión</string>
     <string name="register_str">¿No tienes una cuenta? Registrate</string>
     <string name="icono_de_la_app">Icono de la app</string>
+    <string name="empty_emailOrPassw_msg">Por favor ingrese el correo y la contraseña</string>
 </resources>
