@@ -1,33 +1,36 @@
 package es.udc.psi.caresafe;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.preference.PreferenceManager;
 
-import es.udc.psi.caresafe.GPS.GPSService;
+import es.udc.psi.caresafe.GPS.serviceGPSmanager;
 import es.udc.psi.caresafe.GPS.SettingGPSActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private SharedPreferences sharedPreferences;
-    private GPSService servicioGPS;
+    private serviceGPSmanager serviceGPSmanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +43,16 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        // Verifica y solicita permisos si no se tienen
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-            }, 1);
-        }
-
-        // Configura el botón para obtener la ubicación
+        serviceGPSmanager = new serviceGPSmanager(getApplicationContext(), this);
         Button openMapButton = findViewById(R.id.openMapButton);
-        openMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String locationPreferencies = sharedPreferences.getString(getString(R.string.keyPreferenciesLocation), null);
-                String timePreferencies = sharedPreferences.getString(getString(R.string.keyPreferenciesTime), null);
-                String radiusPreferencies = sharedPreferences.getString(getString(R.string.keyPreferenciesRadius), null);
+        bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager,Context.BIND_AUTO_CREATE);
+    }
 
-                // PASAR TODOS LOS TIPOS A LO QUE REQUIEREN
-                //servicioGPS = new GPSService();
-            }
-        });
+    @Override
+    protected void onDestroy() {
+        serviceGPSmanager.stopService();
+        unbindService(serviceGPSmanager);
+        super.onDestroy();
     }
 
     @Override

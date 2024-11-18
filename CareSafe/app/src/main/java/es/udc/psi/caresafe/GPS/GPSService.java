@@ -2,11 +2,15 @@ package es.udc.psi.caresafe.GPS;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+
+import android.Manifest;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
@@ -17,7 +21,7 @@ import es.udc.psi.caresafe.Constantes;
 public class GPSService extends Service {
     private final IBinder binder = new GPSBinder();
     public class GPSBinder extends Binder{
-        GPSService getService(){
+        public GPSService getService(){
             return GPSService.this;
         }
     }
@@ -29,61 +33,53 @@ public class GPSService extends Service {
 
     // Servicio que accederá la ubicación y comprobará si está dentro de los parámetros permitidos
     // Se le pasa el punto inicial del que no quiere que se salga el cuidado y el radio
-    public GPSService(double initialLatitude, double initialLongitude, int radius, long timeSleep) {
-        this.iLatitude = initialLatitude;
-        this.iLongitude = initialLongitude;
+    public void startService(coords coords, int radius, long timeSleep, Context context){
+        this.iLatitude = coords.getAltitude();
+        this.iLongitude = coords.getLongitude();
         this.radius = radius;
-        this.timeSleep = timeSleep;
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-    }
+        // El valor dado está en segundos
+        this.timeSleep = timeSleep * 1000;
 
-    public void startService(){
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
         isRunning = true;
-        new Thread(() ->{
-            while(isRunning){
-                try{
-                    Thread.sleep(timeSleep);
-                } catch (InterruptedException e) {
-                    Intent broadcastErrorIntent = new Intent(Constantes.MSG_LOCATION_ERROR);
-                    sendBroadcast(broadcastErrorIntent);
+        new Thread(() -> {
+            while (isRunning) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     isRunning = false;
                     stopSelf();
+                    return;
                 }
-                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    Intent broadcastErrorIntent = new Intent(Constantes.MSG_LOCATION_ERROR);
-                    sendBroadcast(broadcastErrorIntent);
-                    isRunning = false;
-                    stopSelf();
-                }
+
                 fusedLocationProviderClient.getLastLocation()
-                        .addOnSuccessListener((Executor) this, location -> {
+                        .addOnSuccessListener(location -> {
                             if (location != null) {
                                 double latitude = location.getLatitude();
                                 double longitude = location.getLongitude();
-                                if(!checkLocationDistance(latitude, longitude)){
-                                    Intent broadcastIntent = new Intent(Constantes.MSG_LOCATION_OUT_OF_RANGE);
-                                    sendBroadcast(broadcastIntent);
-                                    isRunning = false;
-                                    stopSelf();
+                                Log.d("hola", "A");
+                                if (!checkLocationDistance(latitude, longitude)) {
+                                    /*isRunning = false;
+                                    stopSelf();*/
                                 }
                             } else {
-                                Intent broadcastErrorIntent = new Intent(Constantes.MSG_LOCATION_ERROR);
-                                sendBroadcast(broadcastErrorIntent);
                                 isRunning = false;
                                 stopSelf();
                             }
                         })
                         .addOnFailureListener(e -> {
-                            Intent broadcastErrorIntent = new Intent(Constantes.MSG_LOCATION_ERROR);
-                            sendBroadcast(broadcastErrorIntent);
                             isRunning = false;
                             stopSelf();
                         });
-
+                try {
+                    Thread.sleep(this.timeSleep);
+                } catch (InterruptedException e) {
+                    isRunning = false;
+                    stopSelf();
+                }
             }
         }).start();
     }
+
 
     public void stopTracking(){
         isRunning = false;
@@ -100,7 +96,6 @@ public class GPSService extends Service {
         double lon1Rad = Math.toRadians(iLongitude);
         double lat2Rad = Math.toRadians(currentLatitude);
         double lon2Rad = Math.toRadians(currentLongitude);
-
         // Diferencia de las coordenadas
         double deltaLat = lat2Rad - lat1Rad;
         double deltaLon = lon2Rad - lon1Rad;
