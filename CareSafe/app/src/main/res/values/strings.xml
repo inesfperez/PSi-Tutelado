@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CareSafe</string>
+    <string name="email_str">Email</string>
+    <string name="password_str">Contraseña</string>
+    <string name="remember_me_str">Recordarme</string>
+    <string name="login_str">Iniciar sesión</string>
+    <string name="register_str">¿No tienes una cuenta? Registrate</string>
+    <string name="icono_de_la_app">Icono de la app</string>
+    <string name="empty_emailOrPassw_msg">Por favor ingrese el correo y la contraseña</string>
+    <string name="error_authentication">Error de autenticación: email o contraseña incorrectos</string>
+    <string name="succesful_login">Inicio de sesión existoso</string>
 </resources>
