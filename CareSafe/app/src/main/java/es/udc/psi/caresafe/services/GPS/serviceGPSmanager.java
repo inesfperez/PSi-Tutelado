@@ -1,6 +1,4 @@
-package es.udc.psi.caresafe.GPS;
-
-import static android.provider.Settings.System.getString;
+package es.udc.psi.caresafe.services.GPS;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -25,8 +22,9 @@ import java.util.List;
 import java.util.Locale;
 
 import es.udc.psi.caresafe.R;
+import es.udc.psi.caresafe.services.serviceManager;
 
-public class serviceGPSmanager implements ServiceConnection {
+public class serviceGPSmanager implements ServiceConnection, serviceManager {
     private GPSService servicioGPS;
     private boolean isRunningGPS = false;
     private SharedPreferences sharedPreferences;
@@ -38,11 +36,14 @@ public class serviceGPSmanager implements ServiceConnection {
         checkPermissions(context, activity);
     }
 
+    @Override
+    public Intent getServiceIntent() {
+        return new Intent(context, GPSService.class);
+    }
+
+    @Override
     public void stopService(){
         servicioGPS.stopTracking();
-    }
-    public Intent getServicioGPSIntent(){
-        return new Intent(context, GPSService.class);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package es.udc.psi.caresafe.GPS;
+package es.udc.psi.caresafe.services.GPS;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -13,8 +13,6 @@ import android.os.IBinder;
 import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
-
-import java.util.concurrent.Executor;
 
 import es.udc.psi.caresafe.Constantes;
 

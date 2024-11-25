@@ -1,4 +1,4 @@
-package es.udc.psi.caresafe.GPS;
+package es.udc.psi.caresafe.services.GPS;
 
 public class coords {
     double altitude, longitude;

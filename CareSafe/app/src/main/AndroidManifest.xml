@@ -17,17 +17,17 @@
         tools:targetApi="31">
 
         <service
-            android:name=".FallDetection.FallDetectionService"
+            android:name=".services.FallDetection.FallDetectionService"
             android:enabled="true"
             android:exported="true"/>
 
         <activity
-            android:name=".GPS.SettingGPSActivity"
+            android:name=".services.GPS.SettingGPSActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:label="@string/title_activityGPS"/>
         <service
-            android:name=".GPS.GPSService"
+            android:name=".services.GPS.GPSService"
             android:enabled="true"
             android:exported="true" />
         <activity

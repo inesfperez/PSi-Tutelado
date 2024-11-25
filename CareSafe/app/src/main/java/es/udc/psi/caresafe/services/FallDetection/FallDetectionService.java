@@ -1,4 +1,4 @@
-package es.udc.psi.caresafe.FallDetection;
+package es.udc.psi.caresafe.services.FallDetection;
 
 import android.app.Service;
 import android.content.Intent;

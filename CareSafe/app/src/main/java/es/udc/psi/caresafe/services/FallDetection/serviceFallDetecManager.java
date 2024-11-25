@@ -1,4 +1,4 @@
-package es.udc.psi.caresafe.FallDetection;
+package es.udc.psi.caresafe.services.FallDetection;
 
 import android.Manifest;
 import android.app.Activity;
@@ -8,12 +8,13 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.IBinder;
-import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class serviceFallDetecManager implements ServiceConnection {
+import es.udc.psi.caresafe.services.serviceManager;
+
+public class serviceFallDetecManager implements ServiceConnection, serviceManager {
     private FallDetectionService servicioFallDetec;
     private Context context;
     private boolean isRunning = false;
@@ -23,11 +24,13 @@ public class serviceFallDetecManager implements ServiceConnection {
         checkPermission(context, activity);
     }
 
-    public Intent getServicioIntent(){
+    @Override
+    public Intent getServiceIntent() {
         return new Intent(context, FallDetectionService.class);
     }
 
-    public void stopService(){
+    @Override
+    public void stopService() {
         servicioFallDetec.stopService();
         isRunning = false;
     }
