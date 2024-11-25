@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <uses-permission android:name="android.permission.BODY_SENSORS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,8 +19,17 @@
         <service
             android:name=".FallDetection.FallDetectionService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"/>
 
+        <activity
+            android:name=".GPS.SettingGPSActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_activityGPS"/>
+        <service
+            android:name=".GPS.GPSService"
+            android:enabled="true"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

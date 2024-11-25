@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">CareSafe</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyCbie-Y3ozA44yGLMei8-vVn8BhY6nYxAo</string>
+    <string name="GPS_Setting">Ajustes de GPS</string>
+    <string name="title_activityGPS">Ajustes GPS</string>
+    <string name="notConfiguredGPS">Su servicio de seguimiento GPS NO está activo</string>
+    <string name="errorConfiguredGPS">Su servicio de seguimiento GPS ha fallado</string>
+
+
+    <!-- Elementos de gps_preferences.xml -->
+    <string name="titlePreferencies">GPS</string>
+
+    <string name="textSettingGPSRadius">Establezca el radio de detección</string>
+    <string name="textSettingGPSTime">Establezca el tiempo entre comprobaciones (en seg)</string>
+
+    <string name="keyPreferenciesRadius">keyPreferenciesRadiusCareSafeAPP</string>
+    <string name="keyPreferenciesTime">keyPreferenciesTimeCareSafeAPP</string>
+
+    <string name="textSettingGPSCountry">Establezca el país</string>
+    <string name="keyPreferenciesCountry">keyPreferenciesCountryCareSafeAPP</string>
+
+    <string name="textSettingGPSState">Establezca la CA y la provincia (CA, provincia)</string>
+    <string name="keyPreferenciesState">keyPreferenciesStateCareSafeAPP</string>
+
+    <string name="textSettingGPSCity">Establezca la ciudad</string>
+    <string name="keyPreferenciesCity">keyPreferenciesCityCareSafeAPP</string>
+
+    <string name="textSettingGPSRoad">Establezca calle y piso</string>
+    <string name="keyPreferenciesRoad">keyPreferenciesRoadCareSafeAPP</string>
 </resources>
