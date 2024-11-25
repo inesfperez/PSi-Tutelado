@@ -5,11 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,18 +21,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 
+import es.udc.psi.caresafe.databinding.ActivityLoginBinding;
+
 public class LoginActivity extends AppCompatActivity {
 
+    private ActivityLoginBinding binding;
     private static final String TAG = "LoginActivity";
     private static final String REMEMBER_KEY = "rememberMe";
     private static final String SHARED_PREFS_KEY = "CareSafePrefs";
 
-    private EditText emailEditText;
-    private EditText passwordEditText;
-    private CheckBox rememberMeCheckBox;
-    private Button loginButton;
-    private TextView registerTextView;
-    private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
 
@@ -44,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
+        initilizeViewBinding();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -66,24 +59,22 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void initilizeViewBinding() {
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+    }
+
     // Método para manejar el evento de inicio de sesión
     private void onPressedInitSesion() {
-        // Inicializar vistas
-        emailEditText = findViewById(R.id.email_et);
-        passwordEditText = findViewById(R.id.password_et);
-        rememberMeCheckBox = findViewById(R.id.remember_me_cb);
-        loginButton = findViewById(R.id.login_btn);
-        registerTextView = findViewById(R.id.register_tv);
-        progressBar = findViewById(R.id.progress_bar_login);
 
-        registerTextView.setOnClickListener(v -> {
+        binding.registerTv.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
 
-        loginButton.setOnClickListener(v -> {
-            String email = emailEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
+        binding.loginBtn.setOnClickListener(v -> {
+            String email = binding.emailEt.getText().toString();
+            String password = binding.passwordEt.getText().toString();
 
             // Comprobamos que los campos no estén vacíos
             if (email.isEmpty() || password.isEmpty()) {
@@ -92,18 +83,18 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             // Mostramos el ProgressBar
-            progressBar.setVisibility(ProgressBar.VISIBLE);
+            binding.progressBarLogin.setVisibility(ProgressBar.VISIBLE);
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressBar.setVisibility(View.GONE);
+                            binding.progressBarLogin.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 // Inicio de sesión exitoso
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user != null){
                                     user.sendEmailVerification();
-                                    if (rememberMeCheckBox.isChecked()) {
+                                    if (binding.rememberMeCb.isChecked()) {
                                         sharedPreferences.edit().putBoolean(REMEMBER_KEY, true).apply();
                                     }
                                     Toast.makeText(LoginActivity.this, getText(R.string.succesful_login), Toast.LENGTH_SHORT).show();
