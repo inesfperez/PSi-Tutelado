@@ -11,4 +11,5 @@
     <string name="empty_emailOrPassw_msg">Por favor ingrese el correo y la contraseña</string>
     <string name="error_authentication">Error de autenticación: email o contraseña incorrectos</string>
     <string name="succesful_login">Inicio de sesión existoso</string>
+    <string name="logout_str">Cerrar sesión</string>
 </resources>
