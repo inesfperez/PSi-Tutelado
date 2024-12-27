@@ -13,15 +13,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import es.udc.psi.caresafe.databinding.ActivityLoginBinding;
+import es.udc.psi.caresafe.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button logoutButton;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        initilizeViewBinding();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -29,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         logout();
+    }
+
+    private void initilizeViewBinding() {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
     @Override
@@ -44,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logout() {
-        logoutButton = findViewById(R.id.logOut_btn);
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
+        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut(); // Cierra la sesión
