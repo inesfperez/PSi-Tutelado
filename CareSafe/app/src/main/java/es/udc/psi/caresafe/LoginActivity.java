@@ -49,19 +49,32 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
         // Verificamos si hay sesión activa, si la hay vamos directamente a la app
-        if (sharedPreferences.getBoolean(REMEMBER_KEY, false)) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+        if (isUserLoggedIn()) {
+            redirectToMainActivity();
+            return; // Finalizamos aquí para evitar cargar el resto del código
         }
 
         onPressedInitSesion();
-
     }
 
     private void initilizeViewBinding() {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    private boolean isUserLoggedIn() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        boolean rememberMe = sharedPreferences.getBoolean(REMEMBER_KEY, false);
+
+        // Verificar si hay un usuario autenticado y si "Recordar sesión" está activado
+        return currentUser != null && rememberMe;
+    }
+
+    private void redirectToMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     // Método para manejar el evento de inicio de sesión
