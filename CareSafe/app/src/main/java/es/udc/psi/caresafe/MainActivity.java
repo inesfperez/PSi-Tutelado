@@ -1,5 +1,6 @@
 package es.udc.psi.caresafe;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +16,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import es.udc.psi.caresafe.databinding.ActivityLoginBinding;
 import es.udc.psi.caresafe.databinding.ActivityMainBinding;
+import es.udc.psi.caresafe.FallDetection.FallDetectionService;
+import es.udc.psi.caresafe.FallDetection.serviceFallDetecManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private serviceFallDetecManager serviceFallDetecManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,5 +68,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        serviceFallDetecManager = new serviceFallDetecManager(getApplicationContext(), this);
+        bindService(serviceFallDetecManager.getServicioIntent(), serviceFallDetecManager, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        serviceFallDetecManager.stopService();
+        unbindService(serviceFallDetecManager);
+        super.onDestroy();
     }
 }
