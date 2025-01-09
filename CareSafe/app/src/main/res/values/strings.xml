@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">CareSafe</string>
+
+    <!-- Email subjects and body -->
+    <string name="toastEmailSend">Correo enviado con éxito a %1$s</string>
+    <string name="toastEmailError">Algo ha salido mal al enviar el correo a %1$s</string>
+
+    <!-- Alerta de caída -->
+    <string name="fallAlertSubject">¡Hemos detectado una posible caída!</string>
+    <string name="fallAlertBody">Se ha detectado una posible caída mediante CareSafe. Por favor, verifica el estado de %1$s de inmediato.</string>
+
+    <!-- Alerta de geolocalización -->
+    <string name="geoposAlertSubject">¡Hemos detectado una geolocalización peligrosa!</string>
+    <string name="geoposAlertBody">Se ha detectado que %1$s está en una ubicación fuera del área acordada. Por favor, verifica su estado.</string>
+
+    <!-- Botón de pánico -->
+    <string name="panicButtonSubject">¡Algo va mal!</string>
+    <string name="panicButtonBody">El botón de pánico ha sido activado por %1$s. Esto podría ser importante. Por favor, verifica su estado lo antes posible.</string>
 </resources>
