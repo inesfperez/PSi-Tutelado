@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="radiusSettingEntries">
-        <item>Pequeño (25 metros)</item>
-        <item>Mediano (50 metros)</item>
-        <item>Grande (100 metros)</item>
-        <item>Muy grande (250 metros)</item>
+        <item>Pequeño (100 metros)</item>
+        <item>Mediano (500 metros)</item>
+        <item>Grande (1000 metros)</item>
+        <item>Muy grande (2000 metros)</item>
     </string-array>
 
     <string-array name="radiusSettingValues">
-        <item>25</item>
-        <item>50</item>
         <item>100</item>
-        <item>250</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
     </string-array>
 </resources>

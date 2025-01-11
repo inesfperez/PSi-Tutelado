@@ -50,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
         openMapButton.setOnClickListener(v -> {
             Intent mapIntent = new Intent(this, MapsActivity.class);
+            coords coordinates = serviceGPSmanager.getCoordinates();
+            int radius = serviceGPSmanager.getRadius();
+
+            if (coordinates!=null){
+                Bundle bundle = new Bundle();
+                bundle.putDouble("latitude", coordinates.getAltitude()); // Altitude como latitud
+                bundle.putDouble("longitude", coordinates.getLongitude()); // Longitude como longitud
+                bundle.putInt("radius", radius);
+                mapIntent.putExtras(bundle);
+            }
             startActivity(mapIntent);
         });
     }
