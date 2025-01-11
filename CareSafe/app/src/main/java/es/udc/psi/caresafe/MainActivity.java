@@ -26,6 +26,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import es.udc.psi.caresafe.GPS.coords;
 import es.udc.psi.caresafe.GPS.serviceGPSmanager;
 import es.udc.psi.caresafe.GPS.SettingGPSActivity;
 
@@ -46,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         serviceGPSmanager = new serviceGPSmanager(getApplicationContext(), this);
         Button openMapButton = findViewById(R.id.openMapButton);
         bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager,Context.BIND_AUTO_CREATE);
+
+        openMapButton.setOnClickListener(v -> {
+            Intent mapIntent = new Intent(this, MapsActivity.class);
+            startActivity(mapIntent);
+        });
     }
 
     @Override

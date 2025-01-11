@@ -58,6 +58,7 @@ public class GPSService extends Service {
                                 double longitude = location.getLongitude();
                                 Log.d("hola", "A");
                                 if (!checkLocationDistance(latitude, longitude)) {
+                                    Log.d("LOCALIZACIÓN", "Paciente fuera de rango");
                                     /*isRunning = false;
                                     stopSelf();*/
                                 }

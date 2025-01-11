@@ -31,6 +31,7 @@ public class serviceGPSmanager implements ServiceConnection {
     private boolean isRunningGPS = false;
     private SharedPreferences sharedPreferences;
     private Context context;
+    private coords coordPreferencies = null;
 
     public serviceGPSmanager(Context context, Activity activity) {
         this.context = context;
@@ -92,7 +93,7 @@ public class serviceGPSmanager implements ServiceConnection {
             if(timePreferencies != null && radiusPreferencies != null){
                 time = Integer.parseInt(timePreferencies);
                 radius = Integer.parseInt(radiusPreferencies);
-                coords coordPreferencies = getCoordsFromString(locationPreferencies);
+                coordPreferencies = getCoordsFromString(locationPreferencies);
                 if (coordPreferencies != null){
                     if(isRunningGPS){
                         servicioGPS.stopTracking();
