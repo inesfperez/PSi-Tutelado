@@ -22,13 +22,13 @@
 
     <string name="BotondelPanico">!PÁNICO!</string>
 
-    <!-- Elementos de gps_preferences.xml -->
-    <string name="titlePreferencies">GPS</string>
+    <!-- Elementos de preferences.xml -->
+    <string name="title1Preferencies">GPS</string>
 
     <string name="textSettingGPSRadius">Establezca el radio de detección</string>
-    <string name="textSettingGPSTime">Establezca el tiempo entre comprobaciones (en seg)</string>
-
     <string name="keyPreferenciesRadius">keyPreferenciesRadiusCareSafeAPP</string>
+
+    <string name="textSettingGPSTime">Establezca el tiempo entre comprobaciones (en seg)</string>
     <string name="keyPreferenciesTime">keyPreferenciesTimeCareSafeAPP</string>
 
     <string name="textSettingGPSCountry">Establezca el país</string>
@@ -42,6 +42,14 @@
 
     <string name="textSettingGPSRoad">Establezca calle y piso</string>
     <string name="keyPreferenciesRoad">keyPreferenciesRoadCareSafeAPP</string>
+
+    <string name="title2Preferencies">Contacto</string>
+
+    <string name="textSettingToEmail">Establezca el telefono de contacto en caso de emergencia</string>
+    <string name="keyPreferenciesToEmail">keyPreferenciesToEmailCareSafeAPP</string>
+
+    <string name="textSettingAlias">Establezca el alias con el que quiere que se le reconozca</string>
+    <string name="keyPreferenciesAlias">keyPreferenciesAliasCareSafeAPP</string>
 
     <!-- Email subjects and body -->
     <string name="toastEmailSend">Correo enviado con éxito a %1$s</string>

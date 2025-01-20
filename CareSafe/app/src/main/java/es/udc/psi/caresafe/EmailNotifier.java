@@ -11,12 +11,13 @@ import java.util.concurrent.Executors;
 
 public class EmailNotifier {
     private Context context;
-    // Debería de cargarse estas variables de sharedPreferencies o de la BDA, deben de estar especificadas por el usuario en algún momento
-    private final String aliasUser = "aliasExample";
-    private final String toEmail = "caresafeapp@gmail.com";
+    private String aliasUser;
+    private String toEmail;
 
-    public EmailNotifier(Context context) {
+    public EmailNotifier(Context context, String aliasUser, String toEmail) {
         this.context = context;
+        this.aliasUser = aliasUser;
+        this.toEmail = toEmail;
     }
 
     public void sendPanicButtonAlert(){
@@ -41,7 +42,6 @@ public class EmailNotifier {
     }
 
     private void sendEmail(String toEmail, String subject, String body) {
-        // Debemos de guardar estas credenciales en algún lado (BDA p.e.) y que no queden aquí
         String username = "caresafeapp@gmail.com";
         String password = "uuxw povz bviv seqv";
 
