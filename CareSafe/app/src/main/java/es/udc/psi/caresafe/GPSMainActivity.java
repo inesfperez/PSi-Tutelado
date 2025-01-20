@@ -1,23 +1,13 @@
 package es.udc.psi.caresafe;
 
-import android.Manifest;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -30,7 +20,7 @@ import es.udc.psi.caresafe.GPS.coords;
 import es.udc.psi.caresafe.GPS.serviceGPSmanager;
 import es.udc.psi.caresafe.GPS.SettingGPSActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class GPSMainActivity extends AppCompatActivity {
     private serviceGPSmanager serviceGPSmanager;
 
     @Override
