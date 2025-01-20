@@ -10,6 +10,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import es.udc.psi.caresafe.EmailNotifier;
+
 public class FallDetectionService extends Service implements SensorEventListener {
     private final IBinder binder = new FallDetectionBinder();
     private final long timeSleep = 7000;
@@ -47,7 +49,7 @@ public class FallDetectionService extends Service implements SensorEventListener
         }
     }
 
-    public void startService(){
+    public void startService(EmailNotifier emailNotifier){
         isRunning = true;
         new Thread(() -> {
             int count = 0;
@@ -56,8 +58,8 @@ public class FallDetectionService extends Service implements SensorEventListener
                     Thread.sleep(this.timeSleep);
                     Log.d("COUNT", count++ + "");
                     if(fallCaptured){
-                        // Caida
                         Log.d("FallDetection", "Caída detectada.");
+                        emailNotifier.sendEmailFallAlert();
                         fallCaptured = false;
                     }
                 }catch (InterruptedException e){

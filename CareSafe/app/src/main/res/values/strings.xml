@@ -13,6 +13,7 @@
     <string name="succesful_login">Inicio de sesión existoso</string>
     <string name="logout_str">Cerrar sesión</string>
 
+    <string name="settingsError">Servicio no configurado</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="google_maps_key">AIzaSyCbie-Y3ozA44yGLMei8-vVn8BhY6nYxAo</string>
     <string name="GPS_Setting">Ajustes de GPS</string>

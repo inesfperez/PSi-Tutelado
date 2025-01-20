@@ -2,12 +2,14 @@ package es.udc.psi.caresafe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceManager;
 
 import es.udc.psi.caresafe.GPS.coords;
 import es.udc.psi.caresafe.GPS.serviceGPSmanager;
@@ -25,6 +28,8 @@ import es.udc.psi.caresafe.databinding.ActivityRegisterBinding;
 public class GPSMainActivity extends AppCompatActivity {
     private serviceGPSmanager serviceGPSmanager;
     private ActivityGpsmainBinding binding;
+    private SharedPreferences sharedPreferences;
+    private EmailNotifier notifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,17 @@ public class GPSMainActivity extends AppCompatActivity {
         binding = ActivityGpsmainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        serviceGPSmanager = new serviceGPSmanager(getApplicationContext(), this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String toEmail = sharedPreferences.getString(getString(R.string.keyPreferenciesToEmail), null);
+        String alias = sharedPreferences.getString(getString(R.string.keyPreferenciesAlias), null);
+
+        if(toEmail == null || alias == null){
+            Toast.makeText(getApplicationContext(), getString(R.string.settingsError), Toast.LENGTH_SHORT).show();
+        } else {
+            notifier = new EmailNotifier(getApplicationContext(), alias, toEmail);
+            serviceGPSmanager = new serviceGPSmanager(getApplicationContext(), this, notifier);
+            bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager, Context.BIND_AUTO_CREATE);
+        }
         Button openMapButton = binding.openMapButton;
         bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager,Context.BIND_AUTO_CREATE);
 
@@ -56,7 +71,9 @@ public class GPSMainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         serviceGPSmanager.stopService();
-        unbindService(serviceGPSmanager);
+        if(notifier != null){
+            unbindService(serviceGPSmanager);
+        }
         super.onDestroy();
     }
 
@@ -76,5 +93,14 @@ public class GPSMainActivity extends AppCompatActivity {
             Log.d("TAG", "ERRoR");
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Regresa a MainActivity sin cerrar la aplicación
+        super.onBackPressed();
+        Intent intent = new Intent(GPSMainActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Finaliza la actividad actual
     }
 }

@@ -13,13 +13,17 @@ import android.util.Log;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import es.udc.psi.caresafe.EmailNotifier;
+
 public class serviceFallDetecManager implements ServiceConnection {
     private FallDetectionService servicioFallDetec;
     private Context context;
     private boolean isRunning = false;
+    private EmailNotifier emailNotifier;
 
-    public serviceFallDetecManager(Context context, Activity activity){
+    public serviceFallDetecManager(Context context, Activity activity, EmailNotifier emailNotifier){
         this.context = context;
+        this.emailNotifier = emailNotifier;
         checkPermission(context, activity);
     }
 
@@ -37,7 +41,7 @@ public class serviceFallDetecManager implements ServiceConnection {
         FallDetectionService.FallDetectionBinder binder = (FallDetectionService.FallDetectionBinder) iBinder;
         servicioFallDetec = binder.getService();
         isRunning = true;
-        servicioFallDetec.startService();
+        servicioFallDetec.startService(emailNotifier);
     }
 
     @Override

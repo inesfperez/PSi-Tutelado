@@ -14,6 +14,7 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
+import es.udc.psi.caresafe.EmailNotifier;
 import es.udc.psi.caresafe.GPSConstantes;
 
 public class GPSService extends Service {
@@ -31,7 +32,7 @@ public class GPSService extends Service {
 
     // Servicio que accederá la ubicación y comprobará si está dentro de los parámetros permitidos
     // Se le pasa el punto inicial del que no quiere que se salga el cuidado y el radio
-    public void startService(coords coords, int radius, long timeSleep, Context context){
+    public void startService(coords coords, int radius, long timeSleep, Context context, EmailNotifier emailNotifier){
         this.iLatitude = coords.getAltitude();
         this.iLongitude = coords.getLongitude();
         this.radius = radius;
@@ -54,11 +55,11 @@ public class GPSService extends Service {
                             if (location != null) {
                                 double latitude = location.getLatitude();
                                 double longitude = location.getLongitude();
-                                Log.d("hola", "A");
                                 if (!checkLocationDistance(latitude, longitude)) {
                                     Log.d("LOCALIZACIÓN", "Paciente fuera de rango");
-                                    /*isRunning = false;
-                                    stopSelf();*/
+                                    emailNotifier.sendEmailGeoposAlert();
+                                    isRunning = false;
+                                    stopSelf();
                                 }
                             } else {
                                 isRunning = false;

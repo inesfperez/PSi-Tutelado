@@ -2,14 +2,17 @@ package es.udc.psi.caresafe;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -17,9 +20,10 @@ import es.udc.psi.caresafe.databinding.ActivityMainBinding;
 import es.udc.psi.caresafe.FallDetection.serviceFallDetecManager;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
     private serviceFallDetecManager serviceFallDetecManager;
+    private SharedPreferences sharedPreferences;
+    private EmailNotifier notifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         logout();
     }
 
@@ -75,15 +80,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.panicBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String toEmail = sharedPreferences.getString(getString(R.string.keyPreferenciesToEmail), null);
+                String alias = sharedPreferences.getString(getString(R.string.keyPreferenciesAlias), null);
+                if(toEmail == null || alias == null){
+                    Toast.makeText(getApplicationContext(), getString(R.string.settingsError), Toast.LENGTH_SHORT).show();
+                } else {
+                    notifier = new EmailNotifier(getApplicationContext(), alias, toEmail);
+                }
+                if(notifier != null){
+                    notifier.sendPanicButtonAlert();
+                }
+            }
+        });
 
-        serviceFallDetecManager = new serviceFallDetecManager(getApplicationContext(), this);
-        bindService(serviceFallDetecManager.getServicioIntent(), serviceFallDetecManager, Context.BIND_AUTO_CREATE);
+        String toEmail = sharedPreferences.getString(getString(R.string.keyPreferenciesToEmail), null);
+        String alias = sharedPreferences.getString(getString(R.string.keyPreferenciesAlias), null);
+
+        EmailNotifier notifier;
+        if(toEmail == null || alias == null){
+            Toast.makeText(getApplicationContext(), getString(R.string.settingsError), Toast.LENGTH_SHORT).show();
+        } else {
+            notifier = new EmailNotifier(getApplicationContext(), alias, toEmail);
+            serviceFallDetecManager = new serviceFallDetecManager(getApplicationContext(), this, notifier);
+            bindService(serviceFallDetecManager.getServicioIntent(), serviceFallDetecManager, Context.BIND_AUTO_CREATE);
+        }
     }
 
     @Override
     protected void onDestroy() {
         serviceFallDetecManager.stopService();
-        unbindService(serviceFallDetecManager);
+        if(notifier != null){
+            unbindService(serviceFallDetecManager);
+        }
         super.onDestroy();
     }
 }

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import es.udc.psi.caresafe.EmailNotifier;
 import es.udc.psi.caresafe.R;
 
 public class serviceGPSmanager implements ServiceConnection {
@@ -33,10 +34,12 @@ public class serviceGPSmanager implements ServiceConnection {
     private Context context;
     private coords seedLocation;
     private int seedradius;
+    private EmailNotifier emailNotifier;
 
-    public serviceGPSmanager(Context context, Activity activity) {
+    public serviceGPSmanager(Context context, Activity activity, EmailNotifier emailNotifier) {
         this.context = context;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        this.emailNotifier = emailNotifier;
+        this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         checkPermissions(context, activity);
     }
 
@@ -101,7 +104,7 @@ public class serviceGPSmanager implements ServiceConnection {
                     if(isRunningGPS){
                         servicioGPS.stopTracking();
                     }
-                    servicioGPS.startService(coordPreferencies, radius, time, context);
+                    servicioGPS.startService(coordPreferencies, radius, time, context, emailNotifier);
                 }
             } else {
                 Toast.makeText(context,context.getString(R.string.notConfiguredGPS),Toast.LENGTH_SHORT);
