@@ -47,7 +47,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71529cf2-a428-4541-b1fb-fe657be71ace" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/es-values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/MainActivity.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=a41e7605)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\USER\.android\avd\Pixel_3a_API_33_x86_64.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/CareSafe">
       <ProjectState />
@@ -132,18 +132,25 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Android App.app.executor": "Run",
+    "ApkExportedModule": "CareSafe.app",
+    "ExportApk.ApkPathForCareSafe.app": "C:\\Users\\USER\\Documents\\GitHub\\PSi-Tutelado\\CareSafe\\app",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "develop-2",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/USER/Documents/GitHub/PSi-Tutelado/CareSafe/app/src/main/res/values",
-    "last_opened_file_path": "C:/Users/USER/Documents/GitHub/PSi-Tutelado/CareSafe/app/src/main/res/values/es-values",
+    "last_opened_file_path": "C:/Users/USER/CareSafeKey.keystore",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
   }
 }]]></component>
   <component name="RunManager">
