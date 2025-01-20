@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">CareSafe</string>
+    <string name="email_str">Correo Electrónico</string>
+    <string name="password_str">Contraseña</string>
+    <string name="confirm_password_str">Confirmar contraseña</string>
+    <string name="remember_me_str">Recordarme</string>
+    <string name="login_str">Iniciar sesión</string>
+    <string name="commit_register_str">Iniciar sesión</string>
+    <string name="register_str">¿No tienes una cuenta? Registrate</string>
+    <string name="icono_de_la_app">Icono de la app</string>
+    <string name="empty_emailOrPassw_msg">Por favor ingrese el correo y la contraseña</string>
+    <string name="error_authentication">Error de autenticación: email o contraseña incorrectos</string>
+    <string name="succesful_login">Inicio de sesión existoso</string>
+    <string name="logout_str">Cerrar sesión</string>
+
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyCbie-Y3ozA44yGLMei8-vVn8BhY6nYxAo</string>
+    <string name="GPS_Setting">Ajustes de GPS</string>
+    <string name="title_activityGPS">Ajustes GPS</string>
+    <string name="notConfiguredGPS">Su servicio de seguimiento GPS NO está activo</string>
+    <string name="errorConfiguredGPS">Su servicio de seguimiento GPS ha fallado</string>
+
+    <string name="BotondelPanico">!PÁNICO!</string>
+    <string name="abrirMapa">Abrir Mapa</string>
+    <string name="GPS_activity">Control GPS</string>
+
+
+    <!-- Elementos de preferences.xml -->
+    <string name="title1Preferencies">GPS</string>
+
+    <string name="textSettingGPSRadius">Establezca el radio de detección</string>
+    <string name="keyPreferenciesRadius">keyPreferenciesRadiusCareSafeAPP</string>
+
+    <string name="textSettingGPSTime">Establezca el tiempo entre comprobaciones (en seg)</string>
+    <string name="keyPreferenciesTime">keyPreferenciesTimeCareSafeAPP</string>
+
+    <string name="textSettingGPSCountry">Establezca el país</string>
+    <string name="keyPreferenciesCountry">keyPreferenciesCountryCareSafeAPP</string>
+
+    <string name="textSettingGPSState">Establezca la CA y la provincia (CA, provincia)</string>
+    <string name="keyPreferenciesState">keyPreferenciesStateCareSafeAPP</string>
+
+    <string name="textSettingGPSCity">Establezca la ciudad</string>
+    <string name="keyPreferenciesCity">keyPreferenciesCityCareSafeAPP</string>
+
+    <string name="textSettingGPSRoad">Establezca calle y piso</string>
+    <string name="keyPreferenciesRoad">keyPreferenciesRoadCareSafeAPP</string>
+
+    <string name="title2Preferencies">Contacto</string>
+
+    <string name="textSettingToEmail">Establezca el telefono de contacto en caso de emergencia</string>
+    <string name="keyPreferenciesToEmail">keyPreferenciesToEmailCareSafeAPP</string>
+
+    <string name="textSettingAlias">Establezca el alias con el que quiere que se le reconozca</string>
+    <string name="keyPreferenciesAlias">keyPreferenciesAliasCareSafeAPP</string>
+
+    <!-- Email subjects and body -->
+    <string name="toastEmailSend">Correo enviado con éxito a %1$s</string>
+    <string name="toastEmailError">Algo ha salido mal al enviar el correo a %1$s</string>
+
+    <!-- Alerta de caída -->
+    <string name="fallAlertSubject">¡Hemos detectado una posible caída!</string>
+    <string name="fallAlertBody">Se ha detectado una posible caída mediante CareSafe. Por favor, verifica el estado de %1$s de inmediato.</string>
+
+    <!-- Alerta de geolocalización -->
+    <string name="geoposAlertSubject">¡Hemos detectado una geolocalización peligrosa!</string>
+    <string name="geoposAlertBody">Se ha detectado que %1$s está en una ubicación fuera del área acordada. Por favor, verifica su estado.</string>
+
+    <!-- Botón de pánico -->
+    <string name="panicButtonSubject">¡Algo va mal!</string>
+    <string name="panicButtonBody">El botón de pánico ha sido activado por %1$s. Esto podría ser importante. Por favor, verifica su estado lo antes posible.</string>
+</resources>
