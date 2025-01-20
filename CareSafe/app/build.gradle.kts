@@ -57,4 +57,5 @@ dependencies {
     implementation(libs.firebase.auth)
     //implementation("com.google.firebase:firebase-analytics")
     implementation(libs.firebase.analytics)
+    implementation("com.sun.mail:android-mail:1.6.7")
 }
