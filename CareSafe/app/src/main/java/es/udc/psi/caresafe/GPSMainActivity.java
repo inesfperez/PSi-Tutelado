@@ -50,7 +50,6 @@ public class GPSMainActivity extends AppCompatActivity {
             bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager, Context.BIND_AUTO_CREATE);
         }
         Button openMapButton = binding.openMapButton;
-        bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager,Context.BIND_AUTO_CREATE);
 
         openMapButton.setOnClickListener(v -> {
             Intent mapIntent = new Intent(this, MapsActivity.class);
@@ -70,9 +69,10 @@ public class GPSMainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        serviceGPSmanager.stopService();
+
         if(notifier != null){
             unbindService(serviceGPSmanager);
+            serviceGPSmanager.stopService();
         }
         super.onDestroy();
     }

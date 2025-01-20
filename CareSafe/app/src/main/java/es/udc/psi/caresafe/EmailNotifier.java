@@ -49,10 +49,10 @@ public class EmailNotifier {
         executor.execute(() -> {
             try {
                 EmailSender.sendEmail(username, password, toEmail, subject, body);
-                ((AppCompatActivity) context).runOnUiThread(() -> Toast.makeText(context, context.getString(R.string.toastEmailSend, toEmail), Toast.LENGTH_LONG).show());
+                //((AppCompatActivity) context).runOnUiThread(() -> Toast.makeText(context, context.getString(R.string.toastEmailSend, toEmail), Toast.LENGTH_LONG).show());
             } catch (Exception e) {
                 Log.e("EmailNotifier", e.getMessage(), e);
-                ((AppCompatActivity) context).runOnUiThread(() -> Toast.makeText(context, context.getString(R.string.toastEmailError, toEmail), Toast.LENGTH_LONG).show());
+                //((AppCompatActivity) context).runOnUiThread(() -> Toast.makeText(context, context.getString(R.string.toastEmailError, toEmail), Toast.LENGTH_LONG).show());
             }
         });
     }

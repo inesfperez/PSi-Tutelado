@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private serviceFallDetecManager serviceFallDetecManager;
     private SharedPreferences sharedPreferences;
-    private EmailNotifier notifier;
+    private EmailNotifier notifier=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        serviceFallDetecManager.stopService();
         if(notifier != null){
             unbindService(serviceFallDetecManager);
+            serviceFallDetecManager.stopService();
         }
         super.onDestroy();
     }
