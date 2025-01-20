@@ -14,9 +14,7 @@ import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
-import java.util.concurrent.Executor;
-
-import es.udc.psi.caresafe.Constantes;
+import es.udc.psi.caresafe.GPSConstantes;
 
 public class GPSService extends Service {
     private final IBinder binder = new GPSBinder();
@@ -108,7 +106,7 @@ public class GPSService extends Service {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         // Distancia en metros
-        double distance = Constantes.EARTH_RADIUS * c;
+        double distance = GPSConstantes.EARTH_RADIUS * c;
 
         // Verificar si la distancia está dentro del radio permitido
         return distance <= radius;
