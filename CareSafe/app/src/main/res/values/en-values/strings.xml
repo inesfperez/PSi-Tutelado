@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CareSafe</string>
+    <string name="email_str">Email</string>
+    <string name="password_str">Password</string>
+    <string name="confirm_password_str">Confirm password</string>
+    <string name="remember_me_str">Remember me</string>
+    <string name="login_str">Login</string>
+    <string name="commit_register_str">Login</string>
+    <string name="register_str">Don't have an account? Sing up</string>
+    <string name="icono_de_la_app">App icon</string>
+    <string name="empty_emailOrPassw_msg">Please insert email and password</string>
+    <string name="error_authentication">Authenticaion error: incorrect email or password</string>
+    <string name="succesful_login">Login succesfull</string>
+    <string name="logout_str">Log out</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_key">AIzaSyCbie-Y3ozA44yGLMei8-vVn8BhY6nYxAo</string>
+    <string name="GPS_Setting">GPS Settings</string>
+    <string name="title_activityGPS">GPS Settings</string>
+    <string name="notConfiguredGPS">Your GPS tracking service is NOT active</string>
+    <string name="errorConfiguredGPS">Your GPS tracking service has failed</string>
+    <string name="BotondelPanico">!PANIC!</string>
+    <string name="abrirMapa">Open map</string>
+    <string name="GPS_activity">GPS Control</string>
+    <!--  Elementos de preferences.xml  -->
+    <string name="title1Preferencies">GPS</string>
+    <string name="textSettingGPSRadius">Set the detection radius</string>
+    <string name="keyPreferenciesRadius">keyPreferenciesRadiusCareSafeAPP</string>
+    <string name="textSettingGPSTime">Set the time between checks (in secs)</string>
+    <string name="keyPreferenciesTime">keyPreferenciesTimeCareSafeAPP</string>
+    <string name="textSettingGPSCountry">Set country</string>
+    <string name="keyPreferenciesCountry">keyPreferenciesCountryCareSafeAPP</string>
+    <string name="textSettingGPSState">Set CA and province (CA, province)</string>
+    <string name="keyPreferenciesState">keyPreferenciesStateCareSafeAPP</string>
+    <string name="textSettingGPSCity">Set city</string>
+    <string name="keyPreferenciesCity">keyPreferenciesCityCareSafeAPP</string>
+    <string name="textSettingGPSRoad">Set address</string>
+    <string name="keyPreferenciesRoad">keyPreferenciesRoadCareSafeAPP</string>
+    <string name="title2Preferencies">Contact</string>
+    <string name="textSettingToEmail">Establish emergency contact telephone number</string>
+    <string name="keyPreferenciesToEmail">keyPreferenciesToEmailCareSafeAPP</string>
+    <string name="textSettingAlias">Set the alias you want to be recognised by</string>
+    <string name="keyPreferenciesAlias">keyPreferenciesAliasCareSafeAPP</string>
+    <!--  Email subjects and body  -->
+    <string name="toastEmailSend">Email send succesfully to %1$s</string>
+    <string name="toastEmailError">Something went wrong when sending email to %1$s</string>
+    <!--  Alerta de caída  -->
+    <string name="fallAlertSubject">¡We have detected a possible fall!!</string>
+    <string name="fallAlertBody">A possible crash has been detected by CareSafe. Please check the status of %1$s immediately.</string>
+    <!--  Alerta de geolocalización  -->
+    <string name="geoposAlertSubject">We have detected a dangerous geolocation!</string>
+    <string name="geoposAlertBody">It has been detected that %1$s is in a location outside the agreed area. Please check its status.</string>
+    <!--  Botón de pánico  -->
+    <string name="panicButtonSubject">Something is wrong!</string>
+    <string name="panicButtonBody">The panic button has been activated by %1$s. This could be important. Please check out the status as soon as possible.</string>
+</resources>

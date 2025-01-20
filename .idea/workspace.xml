@@ -47,8 +47,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71529cf2-a428-4541-b1fb-fe657be71ace" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/GPSMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/GPSMainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/es-values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +139,8 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "develop-2",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/USER/Documents/GitHub/PSi-Tutelado/CareSafe/app/src/main/res/values",
+    "last_opened_file_path": "C:/Users/USER/Documents/GitHub/PSi-Tutelado/CareSafe/app/src/main/res/values/es-values",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2"
