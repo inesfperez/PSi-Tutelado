@@ -5,7 +5,37 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_gpsmain.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_maps.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_register.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_setting_gpsactivity.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/xml/gps_preferences.xml">
         <config>
           <theme>@style/Theme.CareSafe</theme>
         </config>
@@ -17,10 +47,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71529cf2-a428-4541-b1fb-fe657be71ace" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/EmailSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_gpsmain.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CareSafe/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CareSafe/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/GPSMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/GPSMainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/java/es/udc/psi/caresafe/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/res/xml/gps_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/xml/gps_preferences.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +65,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\USER\.android\avd\Pixel_3a_API_33_x86_64.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=a41e7605)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/CareSafe">
       <ProjectState />
@@ -78,6 +113,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -100,6 +136,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Android App.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",

@@ -21,6 +21,9 @@
     <string name="errorConfiguredGPS">Su servicio de seguimiento GPS ha fallado</string>
 
     <string name="BotondelPanico">!PÁNICO!</string>
+    <string name="abrirMapa">Abrir Mapa</string>
+    <string name="GPS_activity">Control GPS</string>
+
 
     <!-- Elementos de preferences.xml -->
     <string name="title1Preferencies">GPS</string>

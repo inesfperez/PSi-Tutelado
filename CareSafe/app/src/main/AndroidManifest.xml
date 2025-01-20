@@ -43,6 +43,24 @@
 
         <activity android:name=".RegisterActivity" />
 
+        <activity
+            android:name=".GPSMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>

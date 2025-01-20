@@ -19,23 +19,22 @@ import androidx.core.view.WindowInsetsCompat;
 import es.udc.psi.caresafe.GPS.coords;
 import es.udc.psi.caresafe.GPS.serviceGPSmanager;
 import es.udc.psi.caresafe.GPS.SettingGPSActivity;
+import es.udc.psi.caresafe.databinding.ActivityGpsmainBinding;
+import es.udc.psi.caresafe.databinding.ActivityRegisterBinding;
 
 public class GPSMainActivity extends AppCompatActivity {
     private serviceGPSmanager serviceGPSmanager;
+    private ActivityGpsmainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        binding = ActivityGpsmainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         serviceGPSmanager = new serviceGPSmanager(getApplicationContext(), this);
-        Button openMapButton = findViewById(R.id.openMapButton);
+        Button openMapButton = binding.openMapButton;
         bindService(serviceGPSmanager.getServicioGPSIntent(), serviceGPSmanager,Context.BIND_AUTO_CREATE);
 
         openMapButton.setOnClickListener(v -> {

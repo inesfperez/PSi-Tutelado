@@ -54,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout() {
 
+        binding.openGPSActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GPSMainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpia el stack de actividades
+                startActivity(intent);
+                finish(); // Finaliza la actividad actual
+            }
+        });
+
         binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
