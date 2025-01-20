@@ -68,7 +68,11 @@
             </intent-filter>
         </activity>
 
-
+        <activity
+            android:name=".GPS.SettingGPSActivity"
+            android:exported="false"
+            android:parentActivityName=".GPSMainActivity"
+            android:label="@string/title_activityGPS"/>
 
     </application>
 
