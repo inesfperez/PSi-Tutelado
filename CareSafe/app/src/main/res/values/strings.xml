@@ -20,6 +20,7 @@
     <string name="notConfiguredGPS">Su servicio de seguimiento GPS NO está activo</string>
     <string name="errorConfiguredGPS">Su servicio de seguimiento GPS ha fallado</string>
 
+    <string name="BotondelPanico">!PÁNICO!</string>
 
     <!-- Elementos de gps_preferences.xml -->
     <string name="titlePreferencies">GPS</string>

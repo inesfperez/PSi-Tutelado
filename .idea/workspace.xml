@@ -5,7 +5,17 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.CareSafe</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_maps.xml">
         <config>
           <theme>@style/Theme.CareSafe</theme>
         </config>
@@ -17,7 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71529cf2-a428-4541-b1fb-fe657be71ace" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CareSafe/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
